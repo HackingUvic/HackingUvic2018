@@ -4,8 +4,10 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { MatInputModule, MatButtonModule, MatIconModule, MatCardModule } from '@angular/material';
 
 import { AgmCoreModule } from '@agm/core';
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
@@ -13,6 +15,10 @@ import { AgmCoreModule } from '@agm/core';
     BrowserModule,
     CommonModule,
     FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAYmtxPSEUfHKEiKDCoeqcdvGPWp387Yzc'
     })
@@ -20,7 +26,7 @@ import { AgmCoreModule } from '@agm/core';
   providers: [
     GeolocationService,
   ],
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent, CardComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
