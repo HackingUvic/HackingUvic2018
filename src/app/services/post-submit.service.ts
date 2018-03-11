@@ -22,5 +22,4 @@ export class PostSubmitService {
 
     return postsRef.update(post);
   }
-
 }

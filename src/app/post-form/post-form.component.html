@@ -1,15 +1,22 @@
 <h3>Create a Post</h3>
-<form (submit)="submitPost()">
+<form>
   <mat-form-field>
-    <input matInput required [(ngModel)]="post.handle" name="handle" placeholder="Handle">
+    <input matInput required [(ngModel)]="post.title" name="title" placeholder="Title">
   </mat-form-field>
   <mat-form-field>
     <input matInput required [(ngModel)]="post.description" name="description" placeholder="Description">
   </mat-form-field>
 
-  <input type="file" #fileInput (change)="uploadFile()" accept="image/*;capture=camera">
+  <div style="padding-bottom: 5px;">
+    <button (click)="fileInput.click()">
+      <mat-icon>library_add</mat-icon>
+      <span>Select</span>
+      <input hidden type="file" #fileInput (change)="uploadFile($event)" accept="image/*;capture=camera">
+    </button>
+  </div>
+
 
   <button mat-raised-button color="warn" (click)="onCancel()">cancel</button>
-  <button mat-raised-button color="primary" type="submit">Submit</button>
+  <button mat-raised-button color="primary" [disabled]="!isValid()" (click)="submitPost()" type="submit">Submit</button>
 
 </form>

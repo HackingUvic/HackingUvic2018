@@ -46,7 +46,7 @@ export class PostFormComponent {
     });
   }
 
-  uploadFile() {
+  uploadFile(event: Event) {
     event.preventDefault();
 
     const file = this.fileInput.nativeElement.files[0];
@@ -54,6 +54,7 @@ export class PostFormComponent {
 
     this.post.imageurl = filePath;
     this.post.id = filePath;
+    this.post.status = 0;
 
     const task = this.storage.upload(filePath, file);
 
@@ -65,5 +66,9 @@ export class PostFormComponent {
 
   onCancel() {
     this.dialogRef.close();
+  }
+
+  isValid() {
+    return this.post.handle && this.post.description && this.fileInput.nativeElement.files[0];
   }
 }
