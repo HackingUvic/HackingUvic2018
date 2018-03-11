@@ -5,5 +5,6 @@ export class Post {
   handle: string;
   description: string;
   location: Coordinate;
+  imageurl: string;
   hashtags: string[];
 }

@@ -44,10 +44,7 @@ export class AppComponent {
 
       if (this.post) {
         console.log(this.post);
-        this.postSubmitService.savePost(this.post)
-          .subscribe((response) => {
-            console.log(response);
-          });
+        this.postSubmitService.savePost(this.post);
       }
     });
   }

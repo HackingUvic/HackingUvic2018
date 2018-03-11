@@ -1,9 +1,13 @@
-var express = require('express');
+const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const firebase = require("firebase");
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 var config = {
   apiKey: "<API_KEY>",
@@ -21,12 +25,22 @@ app.use(function(req, res, next) {
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/api', function (req, res) {
-  res.json({ message: 'Working' })
+  res.json({ message: 'Working' });
 })
 
 app.post('/api/posts/create', (req, res) => {
-  console.log(req.body);
-  res.json('Works');
+
+  let databaseRef = firebase.database().ref();
+
+  let formBody = req.body;
+
+  let post = {
+    handle: formBody.handle,
+    description: formBody.description,
+
+  }
+
+  res.json(req.body);
 })
 
 
