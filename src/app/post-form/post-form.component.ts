@@ -1,4 +1,6 @@
+import { Post } from './../classes/post';
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-post-form',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostFormComponent implements OnInit {
 
-  constructor() { }
+  post = new Post();
+
+  constructor(public dialogRef: MatDialogRef<PostFormComponent>) {
+
+  }
 
   ngOnInit() {
   }
 
+  onNoClick(): void {
+    console.log('No Click');
+    this.dialogRef.close();
+  }
 }

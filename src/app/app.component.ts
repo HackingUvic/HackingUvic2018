@@ -6,6 +6,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { Post } from './classes/post';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,8 @@ export class AppComponent {
   lat: number;
   lng: number;
   zoomLevel = 16;
+
+  post: Post;
 
   constructor(public geoService: GeolocationService, public dialog: MatDialog) {
 
@@ -31,6 +34,11 @@ export class AppComponent {
 
     const dialogRef = this.dialog.open(PostFormComponent, {
 
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.post = result;
     });
   }
 }
