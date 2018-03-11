@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'https://yftnqzxuoj.execute-api.us-west-2.amazonaws.com/v1',
   firebase: {
     apiKey: 'AIzaSyDru4pntvPtZ4TCPOBs2pSXev3-vFpbJ8I',
     authDomain: 'hackinguvic2018-1520710969657.firebaseapp.com',
