@@ -24,6 +24,10 @@ export class MarkerDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+  cancel() {
+    this.dialogRef.close();
+  }
+
   completePost() {
     this.postSubmitService.removePost(this.data);
     this.dialogRef.close();
