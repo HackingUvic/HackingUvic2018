@@ -1,10 +1,10 @@
+import { Observable } from 'rxjs/Observable';
 import { PostSubmitService } from './services/post-submit.service';
 import { PostFormComponent } from './post-form/post-form.component';
 import { Component } from '@angular/core';
 import { GeolocationService } from './services/geolocation.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MAT_RADIO_GROUP_CONTROL_VALUE_ACCESSOR } from '@angular/material';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Post } from './classes/post';
@@ -19,6 +19,7 @@ export class AppComponent {
   lng: number;
   zoomLevel = 16;
 
+  posts: Observable<Post[]>;
   post: Post;
 
   constructor(public geoService: GeolocationService, public dialog: MatDialog, public postSubmitService: PostSubmitService) {
@@ -28,6 +29,12 @@ export class AppComponent {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
     });
+
+    this.posts = postSubmitService.getPosts();
+  }
+
+  showMarkerDetails(item) {
+    console.log(item);
   }
 
   openDialog() {

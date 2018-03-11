@@ -41,7 +41,8 @@ export class PostFormComponent {
         return;
       }
 
-      this.post.location = new Coordinate(position.coords.latitude, position.coords.longitude);
+      this.post.latitude = position.coords.latitude;
+      this.post.longitude = position.coords.longitude;
     });
   }
 
@@ -52,6 +53,7 @@ export class PostFormComponent {
     const filePath = this.post.handle + Date.now();
 
     this.post.imageurl = filePath;
+    this.post.id = filePath;
 
     const task = this.storage.upload(filePath, file);
 

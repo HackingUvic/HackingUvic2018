@@ -1,10 +1,11 @@
 import { Coordinate } from './coordinate';
 export class Post {
 
-  id: number;
+  id: string;
   handle: string;
   description: string;
-  location: Coordinate;
+  latitude: number;
+  longitude: number;
   imageurl: string;
-  hashtags: string[];
+  status: number;
 }
