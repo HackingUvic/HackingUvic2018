@@ -1,0 +1,9 @@
+<h2>Details</h2>
+<form (submit)="submitPost()">
+  <p>{{data.description}}</p>
+  <p>{{data.longitude}}, {{data.latitude}}</p>
+  <p>{{data.imageurl}}</p>
+  <p>Status: {{data.status}}</p>
+
+  <button mat-raised-button color="warn" type="submit">Close</button>
+</form>
