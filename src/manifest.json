@@ -1,7 +1,7 @@
 {
   "name": "Tidy Town - Help keep your town tidy!",
   "short_name": "Tidy Town",
-  "start_url": ".",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#50ff50",
   "description": "An app that lets you report vandalism and litter to the city.",
