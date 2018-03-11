@@ -1,5 +1,5 @@
 <h3>Create a Post</h3>
-<form>
+<form #form>
   <mat-form-field>
     <input matInput required [(ngModel)]="post.handle" name="handle" placeholder="Handle">
   </mat-form-field>
@@ -9,7 +9,7 @@
 
   <input type="file" accept="image/*;capture=camera">
 
-  <button mat-raised-button color="warn" (click)="onNoClick()">cancel</button>
-  <button mat-dialog-close mat-raised-button color="primary">Submit</button>
+  <button mat-raised-button color="warn" (click)="onCancel()">cancel</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
 
 </form>

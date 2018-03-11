@@ -1,3 +1,4 @@
+import { PostSubmitService } from './services/post-submit.service';
 import { PostFormComponent } from './post-form/post-form.component';
 import { Component } from '@angular/core';
 import { GeolocationService } from './services/geolocation.service';
@@ -20,7 +21,7 @@ export class AppComponent {
 
   post: Post;
 
-  constructor(public geoService: GeolocationService, public dialog: MatDialog) {
+  constructor(public geoService: GeolocationService, public dialog: MatDialog, public postSubmitService: PostSubmitService) {
 
     // TODO: Load cached data
     geoService.getCurrentPosition().subscribe((position: Position) => {
@@ -32,13 +33,22 @@ export class AppComponent {
   openDialog() {
     console.log('Opening Dialog');
 
-    const dialogRef = this.dialog.open(PostFormComponent, {
+    const dialogRef = this.dialog.open(PostFormComponent);
 
+    dialogRef.backdropClick().subscribe(() => {
+      console.log('backdrop clicked');
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       this.post = result;
+
+      if (this.post) {
+        console.log(this.post);
+        this.postSubmitService.savePost(this.post)
+          .subscribe((response) => {
+            console.log(response);
+          });
+      }
     });
   }
 }
