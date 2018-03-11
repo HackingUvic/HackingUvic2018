@@ -7,16 +7,20 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class PostSubmitService {
 
   posts: Observable<any[]>;
+
   constructor(public db: AngularFireDatabase) {
 
-    this.posts = db.list('/posts').valueChanges();
+  }
+
+  getPosts(): Observable<Post[]> {
+    return this.db.list<Post>('/posts').valueChanges();
   }
 
   savePost(post: Post) {
 
-    const postsRef = this.db.list('/posts');
+    const postsRef = this.db.object(`/posts/${post.id}`);
 
-    return postsRef.push(post);
+    return postsRef.update(post);
   }
 
 }
