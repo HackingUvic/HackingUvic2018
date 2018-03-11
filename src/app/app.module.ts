@@ -1,3 +1,4 @@
+import { PostSubmitService } from './services/post-submit.service';
 import { GeolocationService } from './services/geolocation.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServiceWorkerModule} from '@angular/service-worker';
@@ -18,10 +19,7 @@ import { AgmCoreModule } from '@agm/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FABComponentComponent } from './fab-component/fab-component.component';
 import { PostFormComponent } from './post-form/post-form.component';
-
-// const routes: Routes = [
-//   { path: '/', component: AppComponent,  canActivate: [AuthGuard] },
-// ];
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -36,11 +34,12 @@ import { PostFormComponent } from './post-form/post-form.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAYmtxPSEUfHKEiKDCoeqcdvGPWp387Yzc'
     })
   ],
-  providers: [ GeolocationService ],
+  providers: [ GeolocationService, PostSubmitService ],
   declarations: [ AppComponent, FABComponentComponent, PostFormComponent ],
   entryComponents: [ PostFormComponent ],
   bootstrap: [ AppComponent ]
