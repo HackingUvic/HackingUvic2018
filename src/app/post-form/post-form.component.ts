@@ -1,3 +1,4 @@
+import { Post } from './../classes/post';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostFormComponent implements OnInit {
 
-  constructor() { }
+  post = new Post();
 
   ngOnInit() {
   }
-
 }
