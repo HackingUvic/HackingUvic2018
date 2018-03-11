@@ -1,5 +1,11 @@
+import { PostFormComponent } from './post-form/post-form.component';
 import { Component } from '@angular/core';
 import { GeolocationService } from './services/geolocation.service';
+import { MatDialog } from '@angular/material';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +17,20 @@ export class AppComponent {
   lng: number;
   zoomLevel = 16;
 
-  constructor(geoService: GeolocationService) {
-    geoService.getCurrentPosition().subscribe((position: Position) => {
-      console.log('Location received from geolocationService', position);
+  constructor(public geoService: GeolocationService, public dialog: MatDialog) {
 
+    // TODO: Load cached data
+    geoService.getCurrentPosition().subscribe((position: Position) => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
+    });
+  }
+
+  openDialog() {
+    console.log('Opening Dialog');
+
+    const dialogRef = this.dialog.open(PostFormComponent, {
+
     });
   }
 }
