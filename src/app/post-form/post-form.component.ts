@@ -31,8 +31,6 @@ export class PostFormComponent {
     public geoService: GeolocationService,
     private storage: AngularFireStorage) {
 
-    this.post.handle = '@HackUvic2018';
-
     // TODO: Load cached data
     geoService.getCurrentPosition().subscribe((position: Position) => {
 
@@ -50,7 +48,7 @@ export class PostFormComponent {
     event.preventDefault();
 
     const file = this.fileInput.nativeElement.files[0];
-    const filePath = this.post.handle + Date.now();
+    const filePath = this.post.title + Date.now();
 
     this.post.imageurl = filePath;
     this.post.id = filePath;
@@ -69,6 +67,6 @@ export class PostFormComponent {
   }
 
   isValid() {
-    return this.post.handle && this.post.description && this.fileInput.nativeElement.files[0];
+    return this.post.title && this.post.description && this.fileInput.nativeElement.files[0];
   }
 }
