@@ -27,7 +27,7 @@ import { MarkerDetailsComponent } from './marker-details/marker-details.componen
 @NgModule({
   imports: [
     BrowserModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled:environment.production}),
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     CommonModule,
     FormsModule,
     MatInputModule,
