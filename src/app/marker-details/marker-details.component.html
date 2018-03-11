@@ -1,9 +1,11 @@
-<h2>Details</h2>
+<h2>{{ data.title }}</h2>
 <form>
+    <mat-dialog-content>
   <p>{{data.description}}</p>
-  <img [src]="data.imageurl">
-  <p>Status: {{data.status}}</p>
+  <img mat-card-image [src]="data.imageurl" />
 
   <button mat-raised-button color="warn" type="submit">Close</button>
   <button mat-raised-button color="primary" (click)="completePost()" type="submit">Complete</button>
+    </mat-dialog-content>
+
 </form>

@@ -20,6 +20,7 @@ export class AppComponent {
   lng: number;
   zoomLevel = 16;
 
+  youAreHere = 'You are here';
   posts: Observable<Post[]>;
   post: Post;
 
@@ -34,12 +35,11 @@ export class AppComponent {
     this.posts = postSubmitService.getPosts();
   }
 
-
   showMarkerDetails(item) {
     console.log(item);
     this.post = item;
 
-    const markerDetailDialogRef = this.dialog.open(MarkerDetailsComponent,{
+    const markerDetailDialogRef = this.dialog.open(MarkerDetailsComponent, {
       data: this.post
     });
 

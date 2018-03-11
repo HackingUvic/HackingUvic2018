@@ -23,6 +23,7 @@ import { PostFormComponent } from './post-form/post-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { MarkerDetailsComponent } from './marker-details/marker-details.component';
+import { FabLocationComponent } from './fab-location/fab-location.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,7 @@ import { MarkerDetailsComponent } from './marker-details/marker-details.componen
     })
   ],
   providers: [ GeolocationService, PostSubmitService ],
-  declarations: [ AppComponent, FabComponentComponent, PostFormComponent, MarkerDetailsComponent ],
+  declarations: [ AppComponent, FabComponentComponent, PostFormComponent, MarkerDetailsComponent, FabLocationComponent ],
   entryComponents: [ PostFormComponent, MarkerDetailsComponent ],
   bootstrap: [ AppComponent ]
 })

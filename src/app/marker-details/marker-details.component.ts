@@ -19,13 +19,9 @@ export class MarkerDetailsComponent implements OnInit {
   }
 
   updateUrl(url: string) {
-
-    this.data.imageurl = url;
   }
+
   ngOnInit() {
-    this.postSubmitService.getUrl(this.data).subscribe((url) => {
-      this.updateUrl(JSON.stringify(url));
-    });
   }
 
   completePost() {

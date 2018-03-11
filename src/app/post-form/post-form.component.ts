@@ -50,12 +50,14 @@ export class PostFormComponent {
     const file = this.fileInput.nativeElement.files[0];
     const filePath = this.post.title + Date.now();
 
-    this.post.imageurl = filePath;
     this.post.id = filePath;
     this.post.status = 0;
 
-    const task = this.storage.upload(filePath, file);
-
+    const task = this.storage.upload(filePath, file).then(_ => {
+      this.storage.storage.ref(this.post.id).getDownloadURL().then((value) => {
+        this.post.imageurl = value;
+      });
+    });
   }
 
   submitPost() {
