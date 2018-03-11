@@ -8,6 +8,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Post } from './classes/post';
+import { MarkerDetailsComponent } from './marker-details/marker-details.component';
 
 @Component({
   selector: 'app-root',
@@ -33,8 +34,18 @@ export class AppComponent {
     this.posts = postSubmitService.getPosts();
   }
 
+
   showMarkerDetails(item) {
     console.log(item);
+    this.post = item;
+
+    const markerDetailDialogRef = this.dialog.open(MarkerDetailsComponent,{
+      data: this.post
+    });
+
+    markerDetailDialogRef.backdropClick().subscribe(() => {
+      console.log('backdrop clicked');
+    });
   }
 
   openDialog() {
