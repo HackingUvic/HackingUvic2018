@@ -44,11 +44,13 @@ export class PostFormComponent {
     });
   }
 
-  uploadFile(event: Event) {
-    event.preventDefault();
+  updateFile() {
+    this.post.imageurl = ' : ';
+  }
 
+  submitPost() {
     const file = this.fileInput.nativeElement.files[0];
-    const filePath = this.post.title + Date.now();
+    const filePath = this.guid();
 
     this.post.id = filePath;
     this.post.status = 0;
@@ -56,13 +58,22 @@ export class PostFormComponent {
     const task = this.storage.upload(filePath, file).then(_ => {
       this.storage.storage.ref(this.post.id).getDownloadURL().then((value) => {
         this.post.imageurl = value;
+        this.dialogRef.close(this.post);
       });
     });
   }
 
-  submitPost() {
-    this.dialogRef.close(this.post);
-  }
+  guid() {
+    var d = new Date().getTime();
+    if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
+        d += performance.now();
+    }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+}
 
   onCancel() {
     this.dialogRef.close();

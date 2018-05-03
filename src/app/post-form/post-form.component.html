@@ -11,7 +11,7 @@
     <button (click)="fileInput.click()">
       <mat-icon>library_add</mat-icon>
       <span>Select</span>
-      <input hidden type="file" #fileInput (change)="uploadFile($event)" accept="image/*;capture=camera">
+      <input hidden type="file" (change)="updateFile()" #fileInput accept="image/*;capture=camera">
     </button>
   </div>
 
